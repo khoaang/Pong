@@ -35,7 +35,7 @@ public class Score extends Rectangle {
         if(player1>4) {
             g.drawString("P1 WINS!", 600, 100);
             g.setFont(new Font("Monospaced", Font.PLAIN, 30));
-            g.drawString("Press space to play again", 600, 150);
+            g.drawString("Press space to play again", 100, 150);
             over = true;
         }
         if(player2>4) {
