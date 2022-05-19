@@ -24,7 +24,7 @@ public class Ball extends Rectangle {
             randomYDirection--; // either 0 or 1, ball go up if negative
         setYDirection(randomYDirection*initialSpeed);
     }
-
+    // functions for setting values of motion direction
     public void setXDirection(int randomXDirection) {
         xVelocity = randomXDirection;
     }
@@ -35,6 +35,7 @@ public class Ball extends Rectangle {
         x += xVelocity;
         y+= yVelocity;
     }
+    // draw the cute little ball
     public void draw(Graphics g) {
         g.setColor(Color.white);
         g.fillOval(x,y,height,width);

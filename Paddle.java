@@ -26,7 +26,7 @@ public class Paddle extends Rectangle{
                     move();
                     botPlaying = false;
                 }
-                // go down if w is pressed
+                // go down if s is pressed
                 if(e.getKeyCode() == KeyEvent.VK_S) {
                     setYDirection(speed);
                     move();
@@ -49,27 +49,23 @@ public class Paddle extends Rectangle{
             break;
         }
     }
-    public void keyReleased(KeyEvent e) {
+    public void keyReleased(KeyEvent e) { // stop motion on key up
         switch (id) {
             case 1: // w and s keys
-                // go up if w is  pressed
                 if(e.getKeyCode() == KeyEvent.VK_W) {
                     setYDirection(0);
                     move();
                 }
-                // go down if w is pressed
                 if(e.getKeyCode() == KeyEvent.VK_S) {
                     setYDirection(0);
                     move();
                 }
                 break;
             case 2: // up and down keys
-                // go up if up is  pressed
                 if(e.getKeyCode() == KeyEvent.VK_UP) {
                     setYDirection(0);
                     move();
                 }
-                // go down if down is pressed
                 if(e.getKeyCode() == KeyEvent.VK_DOWN) {
                     setYDirection(0);
                     move();

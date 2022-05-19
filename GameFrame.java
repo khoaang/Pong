@@ -6,7 +6,7 @@ import javax.swing.*;
 public class GameFrame extends JFrame {
 
     GamePanel panel;
-    Image img = Toolkit.getDefaultToolkit().getImage("field.png");
+    // sets up game frame (the game window)
     GameFrame() {
         panel = new GamePanel();
         this.add(panel);

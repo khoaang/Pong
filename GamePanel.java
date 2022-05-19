@@ -34,32 +34,37 @@ public class GamePanel extends JPanel implements Runnable{
         gameThread = new Thread(this);
         gameThread.start();
     }
-
+    // creates a new ball instance
     public void newBall() {
         random = new Random();
         ball = new Ball((GAME_WIDTH/2)-(BALL_DIAMETER/2),(GAME_HEIGHT/2)-(BALL_DIAMETER/2),BALL_DIAMETER,BALL_DIAMETER);
     }
+    // creates new paddle instances
     public void newPaddles() {
         paddle1 = new Paddle(50,GAME_HEIGHT/2-(PADDLE_HEIGHT/2),PADDLE_WIDTH, PADDLE_HEIGHT, 1);
         paddle2 = new Paddle(GAME_WIDTH-PADDLE_WIDTH-50,GAME_HEIGHT/2-(PADDLE_HEIGHT/2),PADDLE_WIDTH, PADDLE_HEIGHT, 2);
     }
+    // renders graphics
     public void paint(Graphics g) {
         image = createImage(getWidth(), getHeight());
         graphics = image.getGraphics();
         draw(graphics);
         g.drawImage(image,0,0,this);
     }
+    // builds the graphics object to be render
     public void draw(Graphics g) {
         paddle1.draw(g);
         paddle2.draw(g);
         ball.draw(g);
         score.draw(g);
     }
-    public void move() { // updates position of objects
+    // updates position of objects
+    public void move() {
         paddle1.move();
         paddle2.move();
         ball.move();
     }
+    // check collisions between frame, objects, and each other
     public void checkCollision() {
         // stop paddles at window
         if(paddle1.y <= 0)
@@ -104,8 +109,8 @@ public class GamePanel extends JPanel implements Runnable{
                 newBall();
             }
     }
-    public void bot (Paddle paddle, int side){
-        // computer control of paddle
+    // computer control of paddle
+    public void bot (Paddle paddle, int side) {
         // bots paddle only moves if ball within 3/4 of their screen, for variation in movement
         if (Math.abs(paddle.x-ball.x)<GAME_WIDTH*3/4) {
             // paddle follows ball until reaches limit speed (otherwise no one wins)
@@ -119,8 +124,8 @@ public class GamePanel extends JPanel implements Runnable{
                 paddle.y += speed;
         }
     }
+    // main game loop
     public void run() {
-        // game loop
         long lastTime = System.nanoTime();
         double amountOfTicks = 60.0;
         double ns = 1000000000 / amountOfTicks;
@@ -129,6 +134,7 @@ public class GamePanel extends JPanel implements Runnable{
             long now = System.nanoTime();
             delta += (now - lastTime)/ns;
             lastTime = now;
+            // check if game is  still running
             if(delta >= 1 && !score.over) {
                 move();
                 if(paddle2.botPlaying)
@@ -141,10 +147,12 @@ public class GamePanel extends JPanel implements Runnable{
             }
         }
     }
+    // handles key events
     public class AL extends KeyAdapter {
         public void keyPressed(KeyEvent e){
             paddle1.keyPressed(e);
             paddle2.keyPressed(e);
+            // spacebar to restart game
             if(score.over && e.getKeyCode() == KeyEvent.VK_SPACE) {
                 score = new Score(GAME_WIDTH, GAME_HEIGHT);
             }
