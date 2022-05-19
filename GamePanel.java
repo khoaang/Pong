@@ -116,8 +116,8 @@ public class GamePanel extends JPanel implements Runnable{
             // paddle follows ball until reaches limit speed (otherwise no one wins)
             int speed = ball.yVelocity;
             // speed + 2 to the bots to make it a little more fun
-            if (speed > paddle.speed+2)
-                speed = paddle.speed+2;
+            if (speed > paddle.speed+1)
+                speed = paddle.speed+1;
             if (paddle.y > ball.y)
                 paddle.y -= speed;
             else
