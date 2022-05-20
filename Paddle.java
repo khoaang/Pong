@@ -3,7 +3,7 @@ import java.awt.event.*;
 import java.util.*;
 import javax.swing.*;
 
-public class Paddle extends Rectangle{
+public class Paddle extends Rectangle {
 
     int id;
     int yVelocity;
@@ -73,12 +73,15 @@ public class Paddle extends Rectangle{
                 break;
         }
     }
+    // update velocity value
     public void setYDirection(int yDirection) {
         yVelocity = yDirection; // updates yVelocity
     }
+    // update movement
     public void move() {
         y = y + yVelocity; // really basic way of moving
     }
+    // function for sending graphics to be rendered
     public void draw(Graphics g) {
         if(id==id) {
             g.setColor(Color.white);
