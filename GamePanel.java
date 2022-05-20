@@ -12,6 +12,7 @@ public class GamePanel extends JPanel implements Runnable{
     static final int BALL_DIAMETER = 20;
     static final int PADDLE_WIDTH = 25;
     static final int PADDLE_HEIGHT = 100;
+    // declare other object instances
     Thread gameThread;
     Image image;
     Graphics graphics;
@@ -51,7 +52,7 @@ public class GamePanel extends JPanel implements Runnable{
         draw(graphics);
         g.drawImage(image,0,0,this);
     }
-    // builds the graphics object to be render
+    // builds the graphics object to be rendered
     public void draw(Graphics g) {
         paddle1.draw(g);
         paddle2.draw(g);
