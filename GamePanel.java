@@ -82,6 +82,7 @@ public class GamePanel extends JPanel implements Runnable{
             ball.setYDirection(-ball.yVelocity);
 
         // ball and paddle collision
+        // rectangle class has handy intersects method
         if(ball.intersects(paddle1) || ball.intersects(paddle2)) {
             ball.xVelocity *= -1;
 
